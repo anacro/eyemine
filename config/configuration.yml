@@ -1,0 +1,15 @@
+defaults: &defaults  
+  apns_cert_file: <%= Rails.root.join("plugins/eyemine/config/cert/", "apns_#{Rails.env}.pem") %>
+  apns_cert_pass: 'eyedentity1'  
+  apns_host: 'gateway.sandbox.push.apple.com'
+  apns_port: 2195
+  
+development:
+  <<: *defaults
+  
+test:
+  <<: *defaults  
+    
+production:
+  <<: *defaults
+  apns_host: 'gateway.push.apple.com'

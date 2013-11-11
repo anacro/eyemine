@@ -1,0 +1,37 @@
+# English strings go here for Rails i18n
+ko:  
+  label_mobile_users: "모바일 사용자"    
+  
+  notice_not_mobile_user: "1060000003:모바일 유저로 등록 되어야 합니다"
+  notice_already_mobile_registing: "1060000004:인증절차 진행 중입니다"
+  notice_already_mobile_registed: "1060000002:이미 등록된 기기입니다"  
+  notice_mobile_blocked: "1060000005:모바일 사용이 블럭된 사용자 입니다"  
+  notice_missmatching_mobile_auth: "1060000001:인증등록 정보가 일치하지 않음. 관리자에게 문의 주세요"
+  notice_account_blocked: "1060000006:%{login_err_count}회 이상 인증 실패하여 계정이 잠기었습니다"
+  notice_account_not_approve: "1060000007:모바일 승인된 유저가 아닙니다"
+      
+  field_os: "운영체제"
+  field_mac: "맥어드레스"
+  field_mobile_status: "사용자상태"
+  field_grant_push: "푸쉬허용"
+  
+  setting_login_limit: 로그인 시도 횟수 제한
+  setting_notification_url_android: 안드로이드 알림 서버 url
+  setting_notification_url_ios: iOS 알림 서버 url  
+  
+  code_os_android: "안드로이드"
+  code_os_ios: "iOS"
+  
+  code_mobile_status_0: ""
+  code_mobile_status_1: "승인요청"
+  code_mobile_status_2: "승인완료"
+  code_mobile_status_3: "Block"
+  
+  text_mobile_notification: "<font color='#A6A6A6'>%{author_name} 이(가)</font> <font color='#000000'>%{subject}</font> <font color='#A6A6A6'>을(를)보고하였습니다</font>"
+  text_mobile_notification_notag: "%{author_name} 이(가) %{subject} 을(를)보고하였습니다"
+  
+  permission_view_mobile_issues: "모바일 이슈 보기"
+  permission_edit_mobile_issues: "모바일 이슈 편집"
+  
+  button_add_or_update_mobile_user: "모바일사용자로 추가 또는 업데이트"
+  button_remove_mobile_user: "모바일 사용자에서 제거"

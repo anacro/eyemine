@@ -1,0 +1,67 @@
+<h2>EyeMine &#187; <%= link_to l(:label_mobile_users), '/mobile/users?is_mobile=1' %> &#187; <%=h @user.login %></h2>
+
+<div class="tabs">
+  <ul>
+    <li><%= link_to l(:label_mobile_users), {:controller => 'mobile_users', :action => 'index'}, :class => 'selected' %></li>
+    <li><%= link_to l(:label_settings), {:controller => 'mobile_settings', :action => 'edit' } %></li>
+  </ul>
+</div>
+
+<%= error_messages_for 'user' %>
+
+<form id="frm" accept-charset="UTF-8" action="/mobile/users/<%= @user.id%>" class="edit_user" method="post">
+	<div style="margin:0;padding:0;display:inline">
+		<input name="utf8" type="hidden" value="✓">
+		<input name="_method" type="hidden" value="put">		
+		<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">		
+	</div>
+	
+	<div id="user_form">		
+		<div class="splitcontentleft">
+		<fieldset class="box tabular">
+		  	<legend>모바일 정보</legend>
+		  	
+			<p>
+				<label for="user_mobile_status"><%= l(:field_mobile_status)%><span class="required"> *</span></label>
+				<%= select_tag 'user[mobile_status]', users_mobile_status_options_for_select(@user.mobile_status, false), :class => "small" %>
+			</p>		  	
+		  	
+			<p>
+				<label for="user_os"><%= l(:field_os)%><span class="required"> *</span></label>
+				<%= select_tag "user[os]", options_for_select([[l(:code_os_android), "code_os_android"],[l(:code_os_ios), "code_os_ios"]], @user.os) %>
+			</p>					  	
+	  		
+	  		<p><label for="user_mobile_key">mobile_key</label><input id="user_mobile_key" name="user[mobile_key]" size="100" type="text" value="<%= h(@user.mobile_key)%>"></p>
+	  		<p><label for="user_udid">UDID<span class="required"> *</span></label><input id="user_udid" name="user[udid]" size="50" type="text" value="<%= h(@user.udid)%>"></p>
+	  		<p>
+	  			<label for="user_grant_push"><%= l(:field_grant_push)%></label>
+	  			<input name="user[grant_push]" type="hidden" value="0">
+	  			<%= check_box_tag "user[grant_push]", '1', @user.grant_push %>
+	  		</p>
+		</fieldset>
+		</div>
+	</div>
+	
+	<div style="clear:left;"></div>	    
+  
+	<p>
+		<a href="#" class="icon icon-edit" id="btnAdd">모바일사용자로 추가 또는 업데이트</a>
+		&nbsp;&nbsp;
+		<a href="/mobile/users/<%= @user.id%>" class="icon icon-del" data-confirm="계속 진행 하시겠습니까?" data-method="delete" rel="nofollow">모바일 사용자에서 제거</a>
+	</p>
+</form>
+
+<% html_title(l(:label_mobile_users), @user.login, l(:label_administration)) -%>
+
+<script>
+
+(function($){
+
+	$('#btnAdd').click(function(e){
+		$('#frm').submit();
+		return false;
+	});
+
+})(jQuery);	
+
+</script>

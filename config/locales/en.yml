@@ -1,0 +1,38 @@
+# English strings go here for Rails i18n
+en:  
+  label_mobile_users: "Mobile users"    
+  
+  notice_not_mobile_user: "1060000003:Please register as mobile users"
+  notice_already_mobile_registing: "1060000004:Registing Procedure is in progress"
+  notice_already_mobile_registed: "1060000002:this Mobile is already registered"  
+  notice_mobile_blocked: "1060000005:Mobile use is blocked"  
+  notice_missmatching_mobile_auth: "1060000001:authentication missmatch. please contact the administrator"
+  notice_account_blocked: "1060000006:%{login_err_count}times error. The account has been locked"
+  notice_account_not_approve: "1060000007:Mobile use not approved"
+      
+  field_os: "operating system"
+  field_mac: "Mac address"
+  field_mobile_status: "User status"
+  field_grant_push: "Allow push"
+  
+  setting_login_limit: Limit login number of times
+  setting_notification_url_android: url for Android notification server
+  setting_notification_url_ios: url for iOS notification server 
+  
+  code_os_android: "Android"
+  code_os_ios: "iOS"
+  
+  code_mobile_status_0: ""
+  code_mobile_status_1: "Authorization request"
+  code_mobile_status_2: "Authorization complete"
+  code_mobile_status_3: "Block"
+  
+  text_mobile_notification: "<font color='#A6A6A6'>%{author_name} has reported</font> <font color='#000000'>%{subject}</font>"
+  text_mobile_notification_notag: "%{author_name} has reported %{subject}"
+  
+  permission_view_mobile_issues: "view mobile issues"
+  permission_edit_mobile_issues: "edit mobile issues"
+  
+  button_add_or_update_mobile_user: "add or update to mobile user"
+  button_remove_mobile_user: "remove from mobile user"
+  

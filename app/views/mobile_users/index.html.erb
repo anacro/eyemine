@@ -1,0 +1,52 @@
+<h2>EyeMine</h2>
+
+<div class="tabs">
+  <ul>
+    <li><%= link_to l(:label_mobile_users), {:controller => 'mobile_users', :action => 'index'}, :class => 'selected' %></li>
+    <li><%= link_to l(:label_settings), {:controller => 'mobile_settings', :action => 'edit' } %></li>
+  </ul>
+</div>
+
+<%= form_tag('/mobile/users', :method => :get) do %>
+<fieldset><legend><%= l(:label_filter_plural) %></legend>
+
+<label for='status'><%= l(:field_status) %>:</label>
+<%= select_tag 'mobile_status', users_mobile_status_options_for_select(@mobile_status), :class => "small", :onchange => "this.form.submit(); return false;"  %>
+
+<label for='name'><%= l(:label_user) %>:</label>
+<%= text_field_tag 'name', params[:name], :size => 30 %>
+<%= submit_tag l(:button_apply), :class => "small", :name => nil %>
+<%= link_to l(:button_clear), '/mobile/users', :class => 'icon icon-reload' %>
+</fieldset>
+<% end %>
+&nbsp;
+
+<div class="autoscroll">
+<table class="list">
+  <thead><tr>
+  <%= sort_header_tag('mobile_status', :caption => l(:field_mobile_status)) %>
+  <%= sort_header_tag('login', :caption => l(:field_login)) %>
+  <%= sort_header_tag('firstname', :caption => l(:field_firstname)) %>
+  <%= sort_header_tag('lastname', :caption => l(:field_lastname)) %>
+  <%= sort_header_tag('os', :caption => l(:field_os)) %>  
+  <th>UDID</th>    
+  <%= sort_header_tag('mobile_last_login_on', :caption => l(:field_last_login_on), :default_order => 'desc') %>
+  </tr></thead>
+  <tbody>
+<% for user in @users -%>
+  <tr class="<%= user.css_classes %> <%= cycle("odd", "even") %>">
+  <td><%= l("code_mobile_status_#{user.mobile_status}") %></td>
+  <td class="username"><%= link_to h(user.login), edit_mobile_user_path(user) %></td>
+  <td class="firstname"><%= h(user.firstname) %></td>
+  <td class="lastname"><%= h(user.lastname) %></td>
+  <td><%= l(user.os) unless user.os.nil? %></td>  
+  <td><%= user.udid %></td>    
+  <td class="last_login_on" align="center"><%= format_time(user.mobile_last_login_on) unless user.mobile_last_login_on.nil? %></td>    
+  </tr>
+<% end -%>
+  </tbody>
+</table>
+</div>
+<p class="pagination"><%= pagination_links_full @user_pages, @user_count %></p>
+
+<% html_title(l(:label_mobile_users)) -%>

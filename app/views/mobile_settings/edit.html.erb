@@ -1,0 +1,24 @@
+<h2>Eyemine</h2>
+
+<div class="tabs">
+  <ul>
+    <li><%= link_to l(:label_mobile_users), {:controller => 'mobile_users', :action => 'index'} %></li>
+    <li><%= link_to l(:label_settings), {:controller => 'mobile_settings', :action => 'edit'}, :class => 'selected' %></li>
+  </ul>
+</div>
+
+<%= form_tag({:action => :update}, :method => :put) do %>
+
+<div class="box tabular settings">
+  <p>  
+    <label><%= l(:setting_login_limit) %></label>
+    <%= text_field_tag "settings[try_login_limit]", @settings['try_login_limit'] %>
+  </p>
+  <p>  
+    <label><%= l(:setting_notification_url_android) %></label>
+    <%= text_field_tag "settings[notification_url_android]", @settings['notification_url_android'], size:50 %>
+  </p>  
+</div>
+
+<%= submit_tag l(:button_save) %>
+<% end %>

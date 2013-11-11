@@ -1,0 +1,15 @@
+api.notifications do
+  
+  api.badge @msgs.length  
+  
+  api.array :messages do
+    @msgs.each do |message|
+		api.message :id => message.id do
+			api.created_on message.created_on
+			api.alert message.alert
+			api.issue_id message.issue_id
+		end		
+    end
+  end
+    
+end
