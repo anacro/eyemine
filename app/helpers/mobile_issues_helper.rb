@@ -15,6 +15,21 @@ module MobileIssuesHelper
     html << '</div></div></div></div>'
     
     api.description html
+  end
+  
+  def render_api_attachment(attachment, api)
+    api.attachment do
+      api.id attachment.id
+      api.filename attachment.filename
+      api.filesize attachment.filesize
+      api.content_type attachment.content_type
+      api.description attachment.description
+      
+      content_url = url_for(:controller => 'attachments', :action => 'download', :id => attachment, :filename => attachment.filename, :only_path => false)      
+      api.content_url content_url.sub('/attachments/', '/mobile/attachments/');
+      api.author(:id => attachment.author.id, :name => attachment.author.name) if attachment.author
+      api.created_on attachment.created_on
+    end
   end  
   
   def journal_detail_title(property, prop_key)  

@@ -7,9 +7,6 @@ class MobileIssuesController < MobileController
   helper :issues
   include IssuesHelper
   
-  helper :attachments
-  include AttachmentsHelper
-  
   helper :queries
   include QueriesHelper
   

@@ -1,7 +1,7 @@
 # Plugin's routes
 # See: http://guides.rubyonrails.org/routing.html
 
-get 'mobile', :to => 'mobile#check_live'
+get 'mobile/live', :to => 'mobile#check_live'
 
 get 'mobile/users', :to => 'mobile_users#index'
 get 'mobile/users/:id', :to => 'mobile_users#show'
@@ -23,6 +23,8 @@ get 'mobile/projects', :to => 'mobile_projects#index'
 get 'mobile/issues/:id', :to => 'mobile_issues#show'
 get 'mobile/issues', :to => 'mobile_issues#index'
 put 'mobile/issues/:id', :to =>'issues#update'
+get 'mobile/attachments/download/:id/:filename', :to => 'attachments#download', :id => /\d+/, :filename => /.*/, :as => 'download_named_attachment'
+get 'mobile/attachments/download/:id', :to => 'attachments#download', :id => /\d+/
 
 get 'mobile/ios/:device_token', :to => 'mobile_ios#show'
 put 'mobile/ios/:device_token/init', :to => 'mobile_ios#init_notify'
