@@ -15,7 +15,7 @@ module Eyemine
         Eyemine::APNS.pass = Eyemine::Configuration[:apns_cert_pass]
       end
       
-      def controller_issues_new_before_save(context={})
+      def controller_issues_new_after_save(context={})
         controller_issues_edit_after_save(context)
       end
       
