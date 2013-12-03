@@ -4,9 +4,9 @@ class AppendUserFields < ActiveRecord::Migration
     add_column :users, :os, :string, :limit => 20
     add_column :users, :udid, :string, :limit => 50
     add_column :users, :mobile_key, :string, :limit => 255
-    add_column :users, :mobile_status, :tinyint, :default => 0
+    add_column :users, :mobile_status, :integer, :default => 0, :limit => 2
     add_column :users, :mobile_last_login_on, :datetime
-    add_column :users, :login_err_count, :tinyint, :default => 0
+    add_column :users, :login_err_count, :integer, :default => 0, :limit => 2
     add_column :users, :grant_push, :boolean, :default => false, :null => false
     add_column :users, :sound_on_off, :boolean, :default => false, :null => false
   end
